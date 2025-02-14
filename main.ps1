@@ -9,9 +9,37 @@ function Harden-Chrome {
             $chromePrefsJson | Add-Member -MemberType NoteProperty -Name 'profile' -Value @{}
         }
 
+        # Ensure password_manager_enabled property exists
+        if (-not $chromePrefsJson.profile.PSObject.Properties.Match('password_manager_enabled')) {
+            $chromePrefsJson.profile | Add-Member -MemberType NoteProperty -Name 'password_manager_enabled' -Value $false
+        } else {
+            $chromePrefsJson.profile.password_manager_enabled = $false
+        }
+
+        # Ensure autofill_enabled property exists
+        if (-not $chromePrefsJson.profile.PSObject.Properties.Match('autofill_enabled')) {
+            $chromePrefsJson.profile | Add-Member -MemberType NoteProperty -Name 'autofill_enabled' -Value $false
+        } else {
+            $chromePrefsJson.profile.autofill_enabled = $false
+        }
+
+        # Ensure signin_allowed property exists
+        if (-not $chromePrefsJson.profile.PSObject.Properties.Match('signin_allowed')) {
+            $chromePrefsJson.profile | Add-Member -MemberType NoteProperty -Name 'signin_allowed' -Value $false
+        } else {
+            $chromePrefsJson.profile.signin_allowed = $false
+        }
+
         # Ensure default_content_setting_values object exists
         if (-not $chromePrefsJson.profile.PSObject.Properties.Match('default_content_setting_values')) {
             $chromePrefsJson.profile | Add-Member -MemberType NoteProperty -Name 'default_content_setting_values' -Value @{}
+        }
+
+        # Ensure cookies property exists
+        if (-not $chromePrefsJson.profile.default_content_setting_values.PSObject.Properties.Match('cookies')) {
+            $chromePrefsJson.profile.default_content_setting_values | Add-Member -MemberType NoteProperty -Name 'cookies' -Value 2
+        } else {
+            $chromePrefsJson.profile.default_content_setting_values.cookies = 2
         }
 
         # Ensure safebrowsing object exists
@@ -19,20 +47,12 @@ function Harden-Chrome {
             $chromePrefsJson | Add-Member -MemberType NoteProperty -Name 'safebrowsing' -Value @{}
         }
 
-        # Disable password saving
-        $chromePrefsJson.profile.password_manager_enabled = $false
-
-        # Disable autofill
-        $chromePrefsJson.profile.autofill_enabled = $false
-
-        # Disable browser sign-in
-        $chromePrefsJson.profile.signin_allowed = $false
-
-        # Disable third-party cookies
-        $chromePrefsJson.profile.default_content_setting_values.cookies = 2
-
-        # Enable Safe Browsing
-        $chromePrefsJson.safebrowsing.enabled = $true
+        # Ensure enabled property exists
+        if (-not $chromePrefsJson.safebrowsing.PSObject.Properties.Match('enabled')) {
+            $chromePrefsJson.safebrowsing | Add-Member -MemberType NoteProperty -Name 'enabled' -Value $true
+        } else {
+            $chromePrefsJson.safebrowsing.enabled = $true
+        }
 
         $chromePrefsJson | ConvertTo-Json -Compress | Set-Content $chromePrefsPath
     }
@@ -50,9 +70,37 @@ function Harden-Edge {
             $edgePrefsJson | Add-Member -MemberType NoteProperty -Name 'profile' -Value @{}
         }
 
+        # Ensure password_manager_enabled property exists
+        if (-not $edgePrefsJson.profile.PSObject.Properties.Match('password_manager_enabled')) {
+            $edgePrefsJson.profile | Add-Member -MemberType NoteProperty -Name 'password_manager_enabled' -Value $false
+        } else {
+            $edgePrefsJson.profile.password_manager_enabled = $false
+        }
+
+        # Ensure autofill_enabled property exists
+        if (-not $edgePrefsJson.profile.PSObject.Properties.Match('autofill_enabled')) {
+            $edgePrefsJson.profile | Add-Member -MemberType NoteProperty -Name 'autofill_enabled' -Value $false
+        } else {
+            $edgePrefsJson.profile.autofill_enabled = $false
+        }
+
+        # Ensure signin_allowed property exists
+        if (-not $edgePrefsJson.profile.PSObject.Properties.Match('signin_allowed')) {
+            $edgePrefsJson.profile | Add-Member -MemberType NoteProperty -Name 'signin_allowed' -Value $false
+        } else {
+            $edgePrefsJson.profile.signin_allowed = $false
+        }
+
         # Ensure default_content_setting_values object exists
         if (-not $edgePrefsJson.profile.PSObject.Properties.Match('default_content_setting_values')) {
             $edgePrefsJson.profile | Add-Member -MemberType NoteProperty -Name 'default_content_setting_values' -Value @{}
+        }
+
+        # Ensure cookies property exists
+        if (-not $edgePrefsJson.profile.default_content_setting_values.PSObject.Properties.Match('cookies')) {
+            $edgePrefsJson.profile.default_content_setting_values | Add-Member -MemberType NoteProperty -Name 'cookies' -Value 2
+        } else {
+            $edgePrefsJson.profile.default_content_setting_values.cookies = 2
         }
 
         # Ensure safebrowsing object exists
@@ -60,20 +108,12 @@ function Harden-Edge {
             $edgePrefsJson | Add-Member -MemberType NoteProperty -Name 'safebrowsing' -Value @{}
         }
 
-        # Disable password saving
-        $edgePrefsJson.profile.password_manager_enabled = $false
-
-        # Disable autofill
-        $edgePrefsJson.profile.autofill_enabled = $false
-
-        # Disable browser sign-in
-        $edgePrefsJson.profile.signin_allowed = $false
-
-        # Disable third-party cookies
-        $edgePrefsJson.profile.default_content_setting_values.cookies = 2
-
-        # Enable Safe Browsing
-        $edgePrefsJson.safebrowsing.enabled = $true
+        # Ensure enabled property exists
+        if (-not $edgePrefsJson.safebrowsing.PSObject.Properties.Match('enabled')) {
+            $edgePrefsJson.safebrowsing | Add-Member -MemberType NoteProperty -Name 'enabled' -Value $true
+        } else {
+            $edgePrefsJson.safebrowsing.enabled = $true
+        }
 
         $edgePrefsJson | ConvertTo-Json -Compress | Set-Content $edgePrefsPath
     }
