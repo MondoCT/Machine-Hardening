@@ -10,6 +10,9 @@ function Harden-Chrome {
         }
 
         # Ensure password_manager_enabled property exists
+        if (-not $chromePrefsJson.profile) {
+            $chromePrefsJson.profile = @{}
+        }
         if (-not $chromePrefsJson.profile.PSObject.Properties.Match('password_manager_enabled')) {
             $chromePrefsJson.profile | Add-Member -MemberType NoteProperty -Name 'password_manager_enabled' -Value $false
         } else {
@@ -36,6 +39,9 @@ function Harden-Chrome {
         }
 
         # Ensure cookies property exists
+        if (-not $chromePrefsJson.profile.default_content_setting_values) {
+            $chromePrefsJson.profile.default_content_setting_values = @{}
+        }
         if (-not $chromePrefsJson.profile.default_content_setting_values.PSObject.Properties.Match('cookies')) {
             $chromePrefsJson.profile.default_content_setting_values | Add-Member -MemberType NoteProperty -Name 'cookies' -Value 2
         } else {
@@ -48,6 +54,9 @@ function Harden-Chrome {
         }
 
         # Ensure enabled property exists
+        if (-not $chromePrefsJson.safebrowsing) {
+            $chromePrefsJson.safebrowsing = @{}
+        }
         if (-not $chromePrefsJson.safebrowsing.PSObject.Properties.Match('enabled')) {
             $chromePrefsJson.safebrowsing | Add-Member -MemberType NoteProperty -Name 'enabled' -Value $true
         } else {
@@ -71,6 +80,9 @@ function Harden-Edge {
         }
 
         # Ensure password_manager_enabled property exists
+        if (-not $edgePrefsJson.profile) {
+            $edgePrefsJson.profile = @{}
+        }
         if (-not $edgePrefsJson.profile.PSObject.Properties.Match('password_manager_enabled')) {
             $edgePrefsJson.profile | Add-Member -MemberType NoteProperty -Name 'password_manager_enabled' -Value $false
         } else {
@@ -97,6 +109,9 @@ function Harden-Edge {
         }
 
         # Ensure cookies property exists
+        if (-not $edgePrefsJson.profile.default_content_setting_values) {
+            $edgePrefsJson.profile.default_content_setting_values = @{}
+        }
         if (-not $edgePrefsJson.profile.default_content_setting_values.PSObject.Properties.Match('cookies')) {
             $edgePrefsJson.profile.default_content_setting_values | Add-Member -MemberType NoteProperty -Name 'cookies' -Value 2
         } else {
@@ -109,6 +124,9 @@ function Harden-Edge {
         }
 
         # Ensure enabled property exists
+        if (-not $edgePrefsJson.safebrowsing) {
+            $edgePrefsJson.safebrowsing = @{}
+        }
         if (-not $edgePrefsJson.safebrowsing.PSObject.Properties.Match('enabled')) {
             $edgePrefsJson.safebrowsing | Add-Member -MemberType NoteProperty -Name 'enabled' -Value $true
         } else {
