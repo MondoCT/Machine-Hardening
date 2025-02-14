@@ -12,14 +12,14 @@ function Harden-Chrome {
         # Ensure password_manager_enabled property exists
         if (-not $chromePrefsJson.profile.PSObject.Properties.Match('password_manager_enabled')) {
             $chromePrefsJson.profile | Add-Member -MemberType NoteProperty -Name 'password_manager_enabled' -Value $false
+        } else {
+            $chromePrefsJson.profile.password_manager_enabled = $false
         }
-        $chromePrefsJson.profile.password_manager_enabled = $false
 
         # Ensure autofill_enabled property exists
         if (-not $chromePrefsJson.profile.PSObject.Properties.Match('autofill_enabled')) {
             $chromePrefsJson.profile | Add-Member -MemberType NoteProperty -Name 'autofill_enabled' -Value $false
-        }
-        $chromePrefsJson.profile.autofill_enabled = $false
+        } else {
 
         # Ensure signin_allowed property exists
         if (-not $chromePrefsJson.profile.PSObject.Properties.Match('signin_allowed')) {
