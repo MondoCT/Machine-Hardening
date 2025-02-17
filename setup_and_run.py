@@ -2,6 +2,13 @@ import os
 import subprocess
 import sys
 
+def check_git_installed():
+    try:
+        subprocess.check_call(["git", "--version"])
+    except subprocess.CalledProcessError:
+        print("Git is not installed or not found in PATH. Please install Git and try again.")
+        sys.exit(1)
+
 def install_packages():
     subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", "pdf-to-txt-converter/requirements.txt"])
 
@@ -14,6 +21,7 @@ def run_application():
     subprocess.check_call([sys.executable, "src/main.py"])
 
 if __name__ == "__main__":
+    check_git_installed()
     if not os.path.exists("pdf-to-txt-converter"):
         clone_repository()
     install_packages()
