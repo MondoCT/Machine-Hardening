@@ -1,4 +1,4 @@
-import fitz
+import fitz # type: ignore
 import os
 from tkinter import Tk, filedialog, Button, StringVar
 
