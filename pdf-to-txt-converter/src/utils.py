@@ -1,5 +1,5 @@
 def extract_text_from_pdf(pdf_path):
-    import fitz  # PyMuPDF
+    import fitz # type: ignore
 
     # Open the PDF file
     document = fitz.open(pdf_path)

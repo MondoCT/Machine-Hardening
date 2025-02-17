@@ -1,21 +1,10 @@
-import fitz # type: ignore
-import os
+import fitz  # type: ignore
 from tkinter import Tk, filedialog, Button, StringVar
+from utils import extract_text_from_pdf, save_text_to_file
 
 def pdf_to_text(pdf_path, txt_path):
-    # Open the PDF file
-    document = fitz.open(pdf_path)
-    
-    # Create or overwrite the text file
-    with open(txt_path, 'w', encoding='utf-8') as text_file:
-        # Iterate through each page in the PDF
-        for page_num in range(len(document)):
-            page = document[page_num]
-            text = page.get_text("text")  # Extract text with formatting
-            text_file.write(text)
-            text_file.write("\n")  # Add a newline after each page
-
-    document.close()
+    text = extract_text_from_pdf(pdf_path)
+    save_text_to_file(text, txt_path)
 
 if __name__ == "__main__":
     def select_pdf_file():
