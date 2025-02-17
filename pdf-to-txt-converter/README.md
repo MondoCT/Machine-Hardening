@@ -1,5 +1,3 @@
-# pdf-to-txt-converter/pdf-to-txt-converter/README.md
-
 # PDF to Text Converter
 
 This project provides a simple GUI tool to convert PDF files into text files while preserving as much formatting as possible. It utilizes the PyMuPDF library for reading PDF files.
@@ -14,7 +12,6 @@ This project provides a simple GUI tool to convert PDF files into text files whi
 
 - Python 3.6 or higher
 - PyMuPDF
-- PyInstaller
 
 ## Installation
 
@@ -36,19 +33,15 @@ This project provides a simple GUI tool to convert PDF files into text files whi
    pip install -r requirements.txt
    ```
 
-## Creating the Executable
-
-To create a standalone executable, run the following command:
-
-```
-bash create_executable.sh
-```
-
-The executable `PDF_to_Text_Converter` will be created in the project directory. You can run this executable directly from your desktop.
-
 ## Usage
 
-To convert a PDF file to a text file using the GUI, run the executable and follow the prompts to select the PDF file and the output location for the text file.
+To convert a PDF file to a text file using the GUI, run the following command:
+
+```
+python src/main.py
+```
+
+Follow the prompts to select the PDF file and the output location for the text file.
 
 ## Contributing
 
