@@ -13,7 +13,7 @@ def install_packages():
     subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", "pdf-to-txt-converter/requirements.txt"])
 
 def clone_repository():
-    repo_url = "https://github.com/MondoCT/pdf-to-txt-converter.git"
+    repo_url = "https://github.com/MondoCT/PDF-Extractor.git"
     subprocess.check_call(["git", "clone", repo_url])
 
 def run_application():
