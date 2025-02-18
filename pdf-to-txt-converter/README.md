@@ -13,35 +13,16 @@ This project provides a simple GUI tool to convert PDF files into text files whi
 - Python 3.6 or higher
 - PyMuPDF
 
-## Installation
+## Setup and Run
 
-1. Clone the repository:
+1. Download the `setup_and_run.py` script.
 
-   ```
-   git clone https://github.com/yourusername/pdf-to-txt-converter.git
-   ```
-
-2. Navigate to the project directory:
-
-   ```
-   cd pdf-to-txt-converter
+2. Run the script using Python:
+   ```sh
+   python setup_and_run.py
    ```
 
-3. Install the required packages:
-
-   ```
-   pip install -r requirements.txt
-   ```
-
-## Usage
-
-To convert a PDF file to a text file using the GUI, run the following command:
-
-```
-python src/main.py
-```
-
-Follow the prompts to select the PDF file and the output location for the text file.
+The script will clone the repository, install the required packages, and run the main application with the GUI. Follow the prompts in the GUI to select the PDF file and the output location for the text file.
 
 ## Contributing
 

@@ -14,7 +14,7 @@ def install_packages():
 
 def clone_repository():
     repo_url = "https://github.com/MondoCT/pdf-to-txt-converter.git"
-    subprocess.check_call(["git", "clone", "--branch", "test", repo_url])
+    subprocess.check_call(["git", "clone", repo_url])
 
 def run_application():
     os.chdir("pdf-to-txt-converter")
