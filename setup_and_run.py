@@ -25,5 +25,6 @@ if __name__ == "__main__":
     check_git_installed()
     if not os.path.exists("PDF-Extractor"):
         clone_repository()
+    os.chdir("PDF-Extractor")
     install_packages()
     run_application()
