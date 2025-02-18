@@ -10,6 +10,7 @@ def check_git_installed():
         sys.exit(1)
 
 def install_packages():
+    os.chdir("PDF-Extractor")
     subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", "pdf-to-txt-converter/requirements.txt"])
 
 def clone_repository():
@@ -17,12 +18,12 @@ def clone_repository():
     subprocess.check_call(["git", "clone", repo_url])
 
 def run_application():
-    os.chdir("pdf-to-txt-converter")
+    os.chdir("PDF-Extractor/pdf-to-txt-converter")
     subprocess.check_call([sys.executable, "src/main.py"])
 
 if __name__ == "__main__":
     check_git_installed()
-    if not os.path.exists("pdf-to-txt-converter"):
+    if not os.path.exists("PDF-Extractor"):
         clone_repository()
     install_packages()
     run_application()
